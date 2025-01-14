@@ -11,6 +11,11 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        header: "var(--header)",
+      },
+      fontFamily: {
+        body: ["Poppins"],
+        heading: ["Nunito"],
       },
     },
   },
