@@ -2,7 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const fetchProperties = async (page, limit) => {
-  const response = await axios.get("http://localhost:3000/api/properties", {
+  const propertiesUrl = process.env.NEXT_PUBLIC_PROPERTIES_URL;
+  const response = await axios.get(`${propertiesUrl}`, {
     params: {
       _page: page,
       _limit: limit,

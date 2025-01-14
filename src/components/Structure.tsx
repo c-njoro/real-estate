@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Footer from "./Footer";
 import Header from "./Header";
 
 const Structure = ({ children }: any) => {
@@ -21,11 +22,14 @@ const Structure = ({ children }: any) => {
     });
   };
   return (
-    <div className="">
+    <div className="relative w-full ">
       <div>
         <Header toggleTheme={toggleTheme} isDark={isDark} />
       </div>
-      <div>{children}</div>
+      <div className="w-full">{children}</div>
+      <div className="w-full">
+        <Footer />
+      </div>
     </div>
   );
 };
