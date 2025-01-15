@@ -12,6 +12,8 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         header: "var(--header)",
+        input: "var(--input)",
+        card: "var(--card)",
       },
       fontFamily: {
         body: ["Poppins"],

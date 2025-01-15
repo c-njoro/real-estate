@@ -7,6 +7,7 @@ import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 
 const PropertiesList: React.FC = () => {
+  const [message, setMessage] = useState<string>("kabum shalakaka");
   const [page, setPage] = useState(1);
   const limit = 10;
   const {
@@ -26,15 +27,38 @@ const PropertiesList: React.FC = () => {
   const searchedLocation = useRef<HTMLInputElement>(null);
   const searchedBedroom = useRef<HTMLInputElement>(null);
 
+  const divRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (properties) {
       setFilteredProperties(properties);
     }
   }, [properties]);
 
-  const handleNextPage = () => setPage((prevPage) => prevPage + 1);
-  const handlePreviousPage = () =>
+  const handleNextPage = () => {
+    clearSearch();
+    setPage((prevPage) => prevPage + 1);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Adds smooth scrolling
+    });
+    divRef.current?.scrollTo({
+      top: 0,
+      behavior: "smooth", // Adds smooth scrolling effect
+    });
+  };
+  const handlePreviousPage = () => {
+    clearSearch();
     setPage((prevPage) => Math.max(prevPage - 1, 1));
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Adds smooth scrolling
+    });
+    divRef.current?.scrollTo({
+      top: 0,
+      behavior: "smooth", // Adds smooth scrolling effect
+    });
+  };
 
   //search mechanisms
   const handleLocationSearch = () => {
@@ -76,6 +100,7 @@ const PropertiesList: React.FC = () => {
       message?.classList.add("hide");
       return;
     }
+    setMessage(`Cannot find any properties located at ${searchTerm}`);
     message?.classList.remove("hide");
     setFilteredProperties(properties);
   };
@@ -119,6 +144,7 @@ const PropertiesList: React.FC = () => {
       message?.classList.add("hide");
       return;
     }
+    setMessage(`Cannot find any properties named ${searchTerm}`);
     message?.classList.remove("hide");
     setFilteredProperties(properties);
   };
@@ -149,6 +175,9 @@ const PropertiesList: React.FC = () => {
     if (searchedLocation.current) {
       searchedLocation.current.value = ""; // Only assign if current exists
     }
+    if (searchedName.current) {
+      searchedName.current.value = ""; // Only assign if current exists
+    }
 
     const searchTermNumber = searchTerm ? parseInt(searchTerm, 10) : NaN; // Convert to number
 
@@ -162,88 +191,182 @@ const PropertiesList: React.FC = () => {
         return;
       }
     } else {
+      setMessage(`Cannot find properties with ${searchTerm} bedrooms`);
       message?.classList.remove("hide");
       setFilteredProperties(properties);
       return;
     }
   };
 
+  const clearSearch = () => {
+    const message = document.getElementById("message");
+    if (searchedName.current) {
+      searchedName.current.value = "";
+    }
+    if (searchedLocation.current) {
+      searchedLocation.current.value = "";
+    }
+    if (searchedBedroom.current) {
+      searchedBedroom.current.value = "";
+    }
+    setMessage("");
+    message?.classList.remove("hide");
+    setFilteredProperties(properties);
+  };
+
   return (
-    <div>
-      <div className="filter-side">
-        <div className="by-name">
+    <div className="w-screen h-max flex lg:flex-row flex-col justify-items-start items-start gap-5 bg-background text-foreground">
+      <div className="filter-side lg:w-1/5 lg:h-[calc(90vh)] w-full h-max flex flex-col justify-start items-start gap-5 p-2">
+        <div className="w-full h-max flex flex-row justify-start items-center">
+          <h1 className="capitalize font-semi-bold font-heading tracking-wider py-2">
+            Filter Properties:{" "}
+          </h1>
+        </div>
+        <div className="by-name w-full h-max flex flex-row justify-start items-center">
           <input
             placeholder="search by name.."
             type="text"
             id="name"
             ref={searchedName}
             onChange={handleNameSearch}
+            className="w-full h-10 pl-5 rounded-full bg-input text-foreground font-body font-extralight tracking-wide text-sm sm:text-base"
           />
         </div>
-        <div className="by-location">
+        <div className="by-location w-full h-max flex flex-row justify-start items-center">
           <input
             placeholder="search by location..."
             type="text"
             id="location"
             ref={searchedLocation}
             onChange={handleLocationSearch}
+            className="w-full h-10 pl-5 rounded-full bg-input text-foreground font-body font-extralight tracking-wide text-sm sm:text-base"
           />
         </div>
-        <div className="by-bedroom">
+        <div className="by-bedroom w-full h-max flex flex-row justify-start items-center">
           <input
             placeholder="search by bedrooms..."
             type="number"
             id="bedrooms"
             ref={searchedBedroom}
             onChange={handleBedroomSearch}
+            className="w-full h-10 pl-5 rounded-full bg-input text-foreground font-body font-extralight tracking-wide text-sm sm:text-base"
           />
         </div>
         <div>
-          <p id="message" className="message hide">
-            No such item
+          <p id="message" className="message hide text-red-500 uppercase">
+            {message}
           </p>
         </div>
+        <div className="clear-search w-full h-max flex flex-row justify-start items-center">
+          <button
+            onClick={clearSearch}
+            className="clear-search-button text-sm bg-header font-body tracking-wide uppercase shadow-md py-3 px-2 rounded-md"
+          >
+            Clear Search
+          </button>{" "}
+        </div>
+        <div className="pagination w-full h-max flex flex-row justify-between items-center">
+          <button
+            onClick={handlePreviousPage}
+            disabled={page === 1}
+            className="pagination-button text-sm bg-header font-body tracking-wide uppercase shadow-md py-3 px-2 rounded-md"
+          >
+            Previous Page
+          </button>
+          {filteredProperties.length > 0 ? (
+            <button
+              onClick={handleNextPage}
+              className="pagination-button text-sm bg-header font-body tracking-wide uppercase shadow-md py-3 px-2 rounded-md"
+            >
+              Next Page
+            </button>
+          ) : (
+            ""
+          )}
+        </div>
       </div>
-      <div className="properties-side">
+      <div
+        className="properties-side h-[calc(90vh)] overflow-y-auto scrollbar-none lg:w-4/5 w-full grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8 p-5"
+        ref={divRef}
+      >
         {properties ? (
           filteredProperties.length > 0 ? (
             filteredProperties.map((property: Property, index: any) => (
-              <div key={index} className="property-card">
-                <div className="top">
-                  <Image
-                    src={`${property.imagePaths[0]}`}
-                    alt="property main image"
-                    width={500}
-                    height={500}
-                    style={{
-                      width: "auto",
-                      height: "auto",
-                    }}
-                  ></Image>
-                  <p>{property.availabilityStatus}</p>
+              <div
+                key={index}
+                className="property-card flex flex-col w-full h-full bg-card text-foreground rounded-lg shadow-xl pb-2 "
+              >
+                <div className="top w-full relative h-[calc(25vh)]">
+                  <div className="w-full h-full overflow-hidden">
+                    <Image
+                      src={`${property.imagePaths[0]}`}
+                      alt="property main image"
+                      width={500}
+                      height={500}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    ></Image>
+                  </div>
+                  <div className="availability w-full h-max flex flex-row justify-end absolute top-0 right-0 p-2">
+                    <p
+                      className={` py-2 rounded-full shadow-md px-5 text-white ${
+                        property.availabilityStatus.toLocaleLowerCase() ===
+                        "sold"
+                          ? "bg-red-400"
+                          : "bg-green-400"
+                      }`}
+                    >
+                      {property.availabilityStatus}
+                    </p>
+                  </div>
                 </div>
-                <div className="information">
-                  <div className="name">
-                    <p>{property.name}</p>
+                <div className="information w-full h-max px-2 py-1 flex flex-col justify-start items-start gap-2">
+                  <div className="name w-full h-max flex flex-row justify-start items-center mb-3">
+                    <p className="font-semibold font-body text-2xl tracking-wider">
+                      {property.name}
+                    </p>
                   </div>
-                  <div className="location">
-                    <p>{property.city}</p>
-                    <p>{property.exactAddress}</p>
+                  <div className="location w-full grid grid-cols-2 gap-2 border-b border-t border-background py-1">
+                    <p className="font-bold font-heading">
+                      Location: {property.city}
+                    </p>
+                    <p className="font-bold font-heading">
+                      Address: {property.exactAddress}
+                    </p>
                   </div>
-                  <div className="size">
-                    <p>Bedrooms: {property.bedrooms}</p>
-                    <p>Bathrooms: {property.bathrooms}</p>
-                    <p>{property.size}</p>
+                  <div className="size w-full grid grid-cols-3 gap-2 border-b  border-background pb-1 text-sm">
+                    <p className="font-bold font-heading">
+                      Bedrooms: {property.bedrooms}
+                    </p>
+                    <p className="font-bold font-heading">
+                      Bathrooms: {property.bathrooms}
+                    </p>
+                    <p className="font-bold font-heading">{property.size}</p>
                   </div>
-                  <div className="desc">{property.description}</div>
-                  <div className="more">
-                    <Link href={`/properties/${property.name}`}>More</Link>
+                  <div className="desc w-full h-max flex flex-col justify-start items-start">
+                    <p className="font-extralight font-body text-sm">
+                      {property.description}
+                    </p>
+                  </div>
+                  <div className="more w-full h-max grid grid-cols-2 gap-2 place-items-center mt-4">
+                    <Link
+                      href={`/properties/${property.name}`}
+                      className="w-full h-max py-2 bg-foreground text-background  text-sm uppercase tracking-wide flex flex-row justify-center items-center rounded-md"
+                    >
+                      Inquire Agency
+                    </Link>
+                    <Link
+                      href={`/properties/${property.name}`}
+                      className="w-full h-max py-2 border-2 border-foreground text-foreground  text-sm uppercase tracking-wide flex flex-row justify-center items-center rounded-md"
+                    >
+                      more
+                    </Link>
                   </div>
                 </div>
               </div>
             ))
           ) : (
-            <div>End of properties</div>
+            <div>No more properties, please go back to previous page.</div>
           )
         ) : propertiesLoading ? (
           <div>Loading</div>
@@ -252,18 +375,6 @@ const PropertiesList: React.FC = () => {
         ) : (
           <div>Could not execute properties fetch</div>
         )}
-        <div className="pagination">
-          <button
-            onClick={handlePreviousPage}
-            disabled={page === 1}
-            className="pagination-button"
-          >
-            Previous
-          </button>
-          <button onClick={handleNextPage} className="pagination-button">
-            Next
-          </button>
-        </div>
       </div>
     </div>
   );

@@ -15,12 +15,16 @@
   --background: aliceblue;
   --foreground: #333333;
   --header: #ededed;
+  --input: #e0dfdf;
+  --card: #eceaea;
 }
 
 .dark {
   --background: #282727;
   --foreground: aliceblue;
   --header: #2d2d2d;
+  --input: #555555;
+  --card: #343333;
 }
 
 body {
@@ -31,4 +35,13 @@ body {
 
 .hide {
   display: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+input::placeholder {
+  color: var(--foreground);
+  text-transform: capitalize;
 }
