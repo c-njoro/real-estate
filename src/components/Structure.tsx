@@ -1,8 +1,12 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
 
-const Structure = ({ children }: any) => {
+interface StructureProps {
+  children: React.ReactNode;
+}
+
+const Structure: React.FC<StructureProps> = ({ children }) => {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {

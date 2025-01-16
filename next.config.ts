@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
       "images.pexels.com",
       "media.istockphoto.com",
       "imgs.search.brave.com",
+      "res.cloudinary.com",
     ],
   },
 };

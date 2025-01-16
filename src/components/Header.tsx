@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 interface HeaderProps {
   toggleTheme: () => void;
@@ -19,10 +20,25 @@ const Header = ({ toggleTheme, isDark }: HeaderProps) => {
       </div>
       <div className="sm:w-[calc(70vw)] w-[calc(50vw)] h-[calc(10vh)] flex flex-row justify-end items-center gap-10">
         <div className="links hidden sm:flex flex-row gap-10 justify-end items-center tracking-wide  font-extralight text-sm font-body">
-          <p>Properties</p>
-          <p>Services</p>
-          <p>About</p>
-          <p>Contact</p>
+          <Link href="/" className="group relative inline-block">
+            <p className="text-foreground ">Home</p>
+            <div className="absolute bottom-0 left-0 h-[2px] bg-foreground w-0 transition-all duration-300 group-hover:w-full"></div>
+          </Link>
+
+          <Link href="/properties" className="group relative inline-block">
+            <p className="text-foreground ">Properties</p>
+            <div className="absolute bottom-0 left-0 h-[2px] bg-foreground w-0 transition-all duration-300 group-hover:w-full"></div>
+          </Link>
+
+          <Link href="/" className="group relative inline-block">
+            <p className="text-foreground ">Contact</p>
+            <div className="absolute bottom-0 left-0 h-[2px] bg-foreground w-0 transition-all duration-300 group-hover:w-full"></div>
+          </Link>
+
+          <Link href="/" className="group relative inline-block">
+            <p className="text-foreground ">FAQ</p>
+            <div className="absolute bottom-0 left-0 h-[2px] bg-foreground w-0 transition-all duration-300 group-hover:w-full"></div>
+          </Link>
         </div>
 
         {isDark ? (

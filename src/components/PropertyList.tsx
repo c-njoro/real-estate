@@ -14,13 +14,8 @@ const PropertiesList: React.FC = () => {
     data: properties,
     isLoading: propertiesLoading,
     isError: propertiesError,
-    error,
   } = useProperties(page, limit);
-  const {
-    data: allProperties,
-    isLoading: allLoading,
-    isError: allError,
-  } = useAllProperties();
+  const { data: allProperties } = useAllProperties();
   const [filteredProperties, setFilteredProperties] = useState([]);
 
   const searchedName = useRef<HTMLInputElement>(null);
@@ -61,140 +56,48 @@ const PropertiesList: React.FC = () => {
   };
 
   //search mechanisms
-  const handleLocationSearch = () => {
-    const message = document.getElementById("message");
-    const searchTerm = searchedLocation.current?.value;
-
-    if (!searchTerm) {
-      setFilteredProperties(properties);
-      message?.classList.add("hide");
-      return;
-    } else if (!searchTerm && searchedName) {
-      handleNameSearch();
-      message?.classList.add("hide");
-      return;
-    } else if (!searchTerm && searchedBedroom) {
-      handleBedroomSearch();
-      message?.classList.add("hide");
-      return;
-    }
-
-    if (filteredProperties.length < 1) {
-      console.log("No products rn");
-
-      return;
-    }
-
-    if (searchedName.current) {
-      searchedName.current.value = "";
-    }
-    if (searchedBedroom.current) {
-      searchedBedroom.current.value = ""; // Only assign if current exists
-    }
-
-    const searchedData = allProperties.filter((pr: Property) =>
-      pr.city.toLowerCase().includes(searchTerm)
-    );
-    if (searchedData.length > 0) {
-      setFilteredProperties(searchedData);
-      message?.classList.add("hide");
-      return;
-    }
-    setMessage(`Cannot find any properties located at ${searchTerm}`);
-    message?.classList.remove("hide");
-    setFilteredProperties(properties);
+  const handleInputChange = () => {
+    handleFilter();
   };
-  const handleNameSearch = () => {
+  const handleFilter = () => {
     const message = document.getElementById("message");
-    const searchTerm = searchedName.current?.value;
 
-    if (!searchTerm) {
-      setFilteredProperties(properties);
+    // Extract the search terms
+    const locationTerm = searchedLocation.current?.value?.toLowerCase() || "";
+    const nameTerm = searchedName.current?.value?.toLowerCase() || "";
+    const bedroomTerm = searchedBedroom.current?.value;
+
+    // Convert bedroomTerm to a number if present
+    const bedroomNumber = bedroomTerm ? parseInt(bedroomTerm, 10) : NaN;
+
+    // Filter properties based on the provided terms
+    const filtered = allProperties.filter((property: Property) => {
+      const matchesLocation = locationTerm
+        ? property.city.toLowerCase().includes(locationTerm)
+        : true;
+      const matchesName = nameTerm
+        ? property.name.toLowerCase().includes(nameTerm)
+        : true;
+      const matchesBedrooms = !isNaN(bedroomNumber)
+        ? property.bedrooms === bedroomNumber
+        : true;
+
+      return matchesLocation && matchesName && matchesBedrooms;
+    });
+
+    if (filtered.length > 0) {
+      setFilteredProperties(filtered);
       message?.classList.add("hide");
-      return;
-    } else if (!searchTerm && searchedLocation) {
-      handleLocationSearch();
-      message?.classList.add("hide");
-      return;
-    } else if (!searchTerm && searchedBedroom) {
-      handleBedroomSearch();
-      message?.classList.add("hide");
-      return;
-    }
-
-    if (filteredProperties.length < 1) {
-      console.log("No products rn");
-
-      return;
-    }
-
-    if (searchedLocation.current) {
-      searchedLocation.current.value = ""; // Only assign if current exists
-    }
-
-    if (searchedBedroom.current) {
-      searchedBedroom.current.value = ""; // Only assign if current exists
-    }
-
-    const searchedData = allProperties.filter((pr: Property) =>
-      pr.name.toLowerCase().includes(searchTerm)
-    );
-    if (searchedData.length > 0) {
-      setFilteredProperties(searchedData);
-      message?.classList.add("hide");
-      return;
-    }
-    setMessage(`Cannot find any properties named ${searchTerm}`);
-    message?.classList.remove("hide");
-    setFilteredProperties(properties);
-  };
-  const handleBedroomSearch = () => {
-    const message = document.getElementById("message");
-    const searchTerm = searchedBedroom.current?.value;
-
-    if (!searchTerm) {
-      setFilteredProperties(properties);
-      message?.classList.add("hide");
-      return;
-    } else if (!searchTerm && searchedLocation) {
-      handleLocationSearch();
-      message?.classList.add("hide");
-      return;
-    } else if (!searchTerm && searchedName) {
-      handleNameSearch();
-      message?.classList.add("hide");
-      return;
-    }
-
-    if (filteredProperties.length < 1) {
-      console.log("No products rn");
-
-      return;
-    }
-
-    if (searchedLocation.current) {
-      searchedLocation.current.value = ""; // Only assign if current exists
-    }
-    if (searchedName.current) {
-      searchedName.current.value = ""; // Only assign if current exists
-    }
-
-    const searchTermNumber = searchTerm ? parseInt(searchTerm, 10) : NaN; // Convert to number
-
-    if (!isNaN(searchTermNumber)) {
-      const searchedData = allProperties.filter(
-        (pr: Property) => pr.bedrooms === searchTermNumber
-      );
-      if (searchedData.length > 0) {
-        setFilteredProperties(searchedData);
-        message?.classList.add("hide");
-        return;
-      }
     } else {
-      setMessage(`Cannot find properties with ${searchTerm} bedrooms`);
+      const filterMessage = `
+        Cannot find properties matching the provided filters:
+        ${locationTerm ? `Location: "${locationTerm}" ` : ""}
+        ${nameTerm ? `Name: "${nameTerm}" ` : ""}
+        ${!isNaN(bedroomNumber) ? `Bedrooms: "${bedroomTerm}" ` : ""}
+      `;
+      setMessage(filterMessage.trim());
       message?.classList.remove("hide");
-      setFilteredProperties(properties);
-      return;
+      setFilteredProperties(allProperties); // Reset to all properties if none match
     }
   };
 
@@ -228,7 +131,7 @@ const PropertiesList: React.FC = () => {
             type="text"
             id="name"
             ref={searchedName}
-            onChange={handleNameSearch}
+            onChange={handleInputChange}
             className="w-full h-10 pl-5 rounded-full bg-input text-foreground font-body font-extralight tracking-wide text-sm sm:text-base"
           />
         </div>
@@ -238,7 +141,7 @@ const PropertiesList: React.FC = () => {
             type="text"
             id="location"
             ref={searchedLocation}
-            onChange={handleLocationSearch}
+            onChange={handleInputChange}
             className="w-full h-10 pl-5 rounded-full bg-input text-foreground font-body font-extralight tracking-wide text-sm sm:text-base"
           />
         </div>
@@ -248,7 +151,7 @@ const PropertiesList: React.FC = () => {
             type="number"
             id="bedrooms"
             ref={searchedBedroom}
-            onChange={handleBedroomSearch}
+            onChange={handleInputChange}
             className="w-full h-10 pl-5 rounded-full bg-input text-foreground font-body font-extralight tracking-wide text-sm sm:text-base"
           />
         </div>
@@ -291,7 +194,7 @@ const PropertiesList: React.FC = () => {
       >
         {properties ? (
           filteredProperties.length > 0 ? (
-            filteredProperties.map((property: Property, index: any) => (
+            filteredProperties.map((property: Property, index: number) => (
               <div
                 key={index}
                 className="property-card flex flex-col w-full h-full bg-card text-foreground rounded-lg shadow-xl pb-2 "
