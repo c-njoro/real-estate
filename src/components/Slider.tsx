@@ -23,7 +23,7 @@ const PhotoSlider: React.FC<PhotoSliderProps> = ({ images }) => {
   };
 
   return (
-    <div className="photo-slider w-full h-max min-h-screen flex flex-col justify-start items-center">
+    <div className="photo-slider w-full h-max lg:min-h-screen flex flex-col justify-start items-center">
       {/* Main Photo */}
       <div className="main-photo w-full h-[calc(60vh)] relative flex-col justify-start items-center">
         <div className="w-full h-full">

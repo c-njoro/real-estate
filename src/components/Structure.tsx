@@ -27,10 +27,10 @@ const Structure: React.FC<StructureProps> = ({ children }) => {
   };
   return (
     <div className="relative w-full ">
-      <div>
+      <div className="">
         <Header toggleTheme={toggleTheme} isDark={isDark} />
       </div>
-      <div className="w-full">{children}</div>
+      <div className="w-full pt-[calc(10vh)]">{children}</div>
       <div className="w-full">
         <Footer />
       </div>

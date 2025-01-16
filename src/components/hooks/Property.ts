@@ -8,4 +8,5 @@ export interface Property {
   bedrooms: number;
   bathrooms: number;
   imagePaths: string[];
+  _id: string;
 }

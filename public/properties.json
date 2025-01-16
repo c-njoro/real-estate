@@ -1,0 +1,255 @@
+[
+  {
+    "name": "Lakeview Villa",
+    "description": "A luxurious villa with a stunning lake view, offering modern amenities and spacious living areas.",
+    "city": "Springfield",
+    "exactAddress": "123 Lakeview Drive",
+    "availabilityStatus": "Available",
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "size": "3500 sqft",
+    "imagePaths": [
+      "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg",
+      "https://images.pexels.com/photos/106400/pexels-photo-106400.jpeg",
+      "https://res.cloudinary.com/dbcwhf4al/image/upload/v1736984759/samples/smile.jpg"
+    ]
+  },
+  {
+    "name": "Downtown Apartment",
+    "description": "A chic apartment located in the heart of the city, close to all major attractions and public transport.",
+    "city": "Metropolis",
+    "exactAddress": "456 Main Street",
+    "availabilityStatus": "Sold",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "size": "950 sqft",
+    "imagePaths": [
+      "https://images.pexels.com/photos/259950/pexels-photo-259950.jpeg",
+      "https://images.pexels.com/photos/272474/pexels-photo-272474.jpeg"
+    ]
+  },
+  {
+    "name": "Suburban Family Home",
+    "description": "A cozy family home in a quiet suburban neighborhood, featuring a large backyard and modern kitchen.",
+    "city": "Pleasantville",
+    "exactAddress": "789 Elm Street",
+    "availabilityStatus": "Available",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "size": "2000 sqft",
+    "imagePaths": [
+      "https://images.pexels.com/photos/259950/pexels-photo-259950.jpeg",
+      "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg"
+    ]
+  },
+  {
+    "name": "Beachfront Condo",
+    "description": "A stylish condo with breathtaking ocean views, offering direct access to the beach and resort facilities.",
+    "city": "Seaside",
+    "exactAddress": "321 Ocean Avenue",
+    "availabilityStatus": "Pending",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "size": "1200 sqft",
+    "imagePaths": [
+      "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg",
+      "https://images.pexels.com/photos/1535379/pexels-photo-1535379.jpeg"
+    ]
+  },
+  {
+    "name": "Mountain Cabin Retreat",
+    "description": "A rustic cabin nestled in the mountains, perfect for a peaceful getaway with nature trails nearby.",
+    "city": "Mountainview",
+    "exactAddress": "654 Pine Road",
+    "availabilityStatus": "Available",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "size": "2200 sqft",
+    "imagePaths": [
+      "https://images.pexels.com/photos/259950/pexels-photo-259950.jpeg",
+      "https://images.pexels.com/photos/3035100/pexels-photo-3035100.jpeg"
+    ]
+  },
+  {
+    "name": "Urban Loft",
+    "description": "A modern loft in the city's arts district, featuring an open floor plan and industrial design elements.",
+    "city": "Downtown",
+    "exactAddress": "987 Art Street",
+    "availabilityStatus": "Sold",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "size": "800 sqft",
+    "imagePaths": [
+      "https://images.pexels.com/photos/259950/pexels-photo-259950.jpeg",
+      "https://images.pexels.com/photos/3184457/pexels-photo-3184457.jpeg"
+    ]
+  },
+  {
+    "name": "Country Estate",
+    "description": "An expansive estate in the countryside, offering privacy, luxury, and beautiful landscaped gardens.",
+    "city": "Greenfields",
+    "exactAddress": "159 Country Lane",
+    "availabilityStatus": "Available",
+    "bedrooms": 5,
+    "bathrooms": 4,
+    "size": "5000 sqft",
+    "imagePaths": [
+      "https://images.pexels.com/photos/259950/pexels-photo-259950.jpeg",
+      "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg"
+    ]
+  },
+  {
+    "name": "Historic Townhouse",
+    "description": "A charming townhouse with historic architecture, located in a vibrant neighborhood with rich culture.",
+    "city": "Oldtown",
+    "exactAddress": "753 Heritage Street",
+    "availabilityStatus": "Pending",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "size": "2500 sqft",
+    "imagePaths": [
+      "https://images.pexels.com/photos/259950/pexels-photo-259950.jpeg",
+      "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg"
+    ]
+  },
+  {
+    "name": "Luxury Penthouse",
+    "description": "An exclusive penthouse offering panoramic city views, top-of-the-line finishes, and private terrace.",
+    "city": "Uptown",
+    "exactAddress": "246 Skyline Blvd",
+    "availabilityStatus": "Available",
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "size": "4000 sqft",
+    "imagePaths": [
+      "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg",
+      "https://images.pexels.com/photos/3184457/pexels-photo-3184457.jpeg"
+    ]
+  },
+  {
+    "name": "Eco-Friendly Bungalow",
+    "description": "A sustainable bungalow with eco-friendly features, situated in a community focused on green living.",
+    "city": "EcoVille",
+    "exactAddress": "369 Greenway Drive",
+    "availabilityStatus": "Available",
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "size": "1500 sqft",
+    "imagePaths": [
+      "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg",
+      "https://images.pexels.com/photos/3079886/pexels-photo-3079886.jpeg"
+    ]
+  },
+  {
+    "name": "Riverside Cottage",
+    "description": "A quaint cottage by the river, offering serene views and a cozy atmosphere, perfect for relaxation.",
+    "city": "Waterside",
+    "exactAddress": "852 River Road",
+    "availabilityStatus": "Sold",
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "size": "1000 sqft",
+    "imagePaths": [
+      "https://images.pexels.com/photos/259950/pexels-photo-259950.jpeg",
+      "https://images.pexels.com/photos/2988695/pexels-photo-2988695.jpeg"
+    ]
+  },
+  {
+    "name": "Modern Suburban House",
+    "description": "A newly built house in a family-friendly suburb, featuring contemporary design and open spaces.",
+    "city": "Suburbia",
+    "exactAddress": "147 Maple Street",
+    "availabilityStatus": "Pending",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "size": "2200 sqft",
+    "imagePaths": [
+      "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg",
+      "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg"
+    ]
+  },
+  {
+    "name": "Luxury Downtown Loft",
+    "description": "A chic loft with high-end finishes, perfect for urban living with a rooftop patio and city views.",
+    "city": "Metropolis",
+    "exactAddress": "101 Urban Street",
+    "availabilityStatus": "Available",
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "size": "1200 sqft",
+    "imagePaths": [
+      "https://images.pexels.com/photos/3184457/pexels-photo-3184457.jpeg",
+      "https://images.pexels.com/photos/106400/pexels-photo-106400.jpeg"
+    ]
+  },
+  {
+    "name": "Countryside Retreat",
+    "description": "A peaceful countryside retreat with a large garden and proximity to hiking trails, ideal for nature lovers.",
+    "city": "Countryside",
+    "exactAddress": "567 Trail Road",
+    "availabilityStatus": "Available",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "size": "2300 sqft",
+    "imagePaths": [
+      "https://images.pexels.com/photos/259950/pexels-photo-259950.jpeg",
+      "https://images.pexels.com/photos/2988695/pexels-photo-2988695.jpeg"
+    ]
+  },
+  {
+    "name": "Coastal Retreat",
+    "description": "A luxurious retreat on the coast, offering private access to the beach and a spacious outdoor living area.",
+    "city": "Coastal Bay",
+    "exactAddress": "555 Beachfront Road",
+    "availabilityStatus": "Sold",
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "size": "3600 sqft",
+    "imagePaths": [
+      "https://images.pexels.com/photos/3184457/pexels-photo-3184457.jpeg",
+      "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg"
+    ]
+  },
+  {
+    "name": "Grand Estate Mansion",
+    "description": "A grand mansion with expansive grounds, a private pool, and state-of-the-art amenities.",
+    "city": "Royal Town",
+    "exactAddress": "99 King’s Avenue",
+    "availabilityStatus": "Pending",
+    "bedrooms": 6,
+    "bathrooms": 5,
+    "size": "8000 sqft",
+    "imagePaths": [
+      "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg",
+      "https://images.pexels.com/photos/3184457/pexels-photo-3184457.jpeg"
+    ]
+  },
+  {
+    "name": "City View Apartment",
+    "description": "A modern apartment with a panoramic view of the city skyline, perfect for urban professionals.",
+    "city": "Skyline City",
+    "exactAddress": "125 Skyview Street",
+    "availabilityStatus": "Available",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "size": "1100 sqft",
+    "imagePaths": [
+      "https://images.pexels.com/photos/259950/pexels-photo-259950.jpeg",
+      "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg"
+    ]
+  },
+  {
+    "name": "Lakefront Cottage",
+    "description": "A charming cottage by the lake, perfect for a weekend getaway with fishing and boating activities.",
+    "city": "Lakeside",
+    "exactAddress": "789 Lakeshore Drive",
+    "availabilityStatus": "Available",
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "size": "1500 sqft",
+    "imagePaths": [
+      "https://images.pexels.com/photos/259950/pexels-photo-259950.jpeg",
+      "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg"
+    ]
+  }
+]

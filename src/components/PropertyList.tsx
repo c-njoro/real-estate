@@ -259,7 +259,7 @@ const PropertiesList: React.FC = () => {
                       Inquire Agency
                     </Link>
                     <Link
-                      href={`/properties/${property.name}`}
+                      href={`/properties/${property._id}`}
                       className="w-full h-max py-2 border-2 border-foreground text-foreground  text-sm uppercase tracking-wide flex flex-row justify-center items-center rounded-md"
                     >
                       more

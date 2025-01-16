@@ -8,7 +8,7 @@ interface HeaderProps {
 
 const Header = ({ toggleTheme, isDark }: HeaderProps) => {
   return (
-    <div className="bg-header flex flex-row justify-between p-4 items-center w-[calc(100vw)] h-[calc(10vh)]">
+    <div className="bg-header flex flex-row justify-between p-4 items-center w-[calc(100vw)] h-[calc(10vh)] fixed z-10">
       <div className="logo sm:w-[calc(30vw)] w-[calc(50vw)] sm:h-[calc(10vh)] flex flex-col justify-center items-center">
         <Image
           src={`https://images.pexels.com/photos/430205/pexels-photo-430205.jpeg`}
@@ -18,7 +18,7 @@ const Header = ({ toggleTheme, isDark }: HeaderProps) => {
           className="rounded-full"
         ></Image>
       </div>
-      <div className="sm:w-[calc(70vw)] w-[calc(50vw)] h-[calc(10vh)] flex flex-row justify-end items-center gap-10">
+      <div className="sm:w-[calc(70vw)] w-[calc(50vw)] h-[calc(10vh)] flex flex-row justify-end items-center gap-10 ">
         <div className="links hidden sm:flex flex-row gap-10 justify-end items-center tracking-wide  font-extralight text-sm font-body">
           <Link href="/" className="group relative inline-block">
             <p className="text-foreground ">Home</p>
