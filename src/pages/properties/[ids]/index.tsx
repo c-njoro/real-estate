@@ -69,40 +69,43 @@ export default OneProperty;
 
 export async function getStaticPaths() {
   const productsUrl = process.env.NEXT_PUBLIC_PROPERTIES_URL;
-  const res = await fetch(`${productsUrl}`, {
-    headers: {
-      Accept: "application/json",
-      "ngrok-skip-browser-warning": "true",
-    },
-  });
-  const products = await res.json();
-
-  const allPaths = products.map((pr: Property) => {
-    return {
-      params: {
-        ids: pr._id,
-      },
-    };
-  });
-
+  // We can return empty paths and let fallback handle the generation
   return {
-    paths: allPaths,
-    fallback: "blocking",
+    paths: [], // Don't pre-render any pages at build time
+    fallback: "blocking", // Generate pages on first request
   };
 }
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-  const productsUrl = process.env.NEXT_PUBLIC_PROPERTIES_URL;
-  const id = context?.params?.ids;
-  const res = await fetch(`${productsUrl}`, {
-    headers: {
-      Accept: "application/json",
-      "ngrok-skip-browser-warning": "true",
-    },
-  });
-  const products = await res.json();
-  const currentData = products.find((pr: Property) => pr._id === id);
-  return { props: { currentData } };
+  try {
+    const productsUrl = process.env.NEXT_PUBLIC_PROPERTIES_ONE_URL;
+    const id = context?.params?.ids;
+
+    // Use your single property endpoint
+    const res = await fetch(`${productsUrl}/${id}`, {
+      headers: {
+        Accept: "application/json",
+        "ngrok-skip-browser-warning": "true",
+      },
+    });
+
+    if (!res.ok) {
+      return {
+        notFound: true, // This will show your 404 page
+      };
+    }
+
+    const currentData = await res.json();
+
+    return {
+      props: { currentData },
+      revalidate: 60, // Optional: Revalidate every 60 seconds
+    };
+  } catch (error) {
+    return {
+      notFound: true,
+    };
+  }
 }
 
 type PropertyPageProps = {

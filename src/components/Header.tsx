@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 
 interface HeaderProps {
   toggleTheme: () => void;
@@ -7,6 +9,8 @@ interface HeaderProps {
 }
 
 const Header = ({ toggleTheme, isDark }: HeaderProps) => {
+  const router = useRouter();
+  const pathname = usePathname();
   return (
     <div className="bg-header flex flex-row justify-between p-4 items-center w-[calc(100vw)] h-[calc(10vh)] fixed z-10">
       <div className="logo sm:w-[calc(30vw)] w-[calc(50vw)] sm:h-[calc(10vh)] flex flex-col justify-center items-center">
@@ -22,22 +26,42 @@ const Header = ({ toggleTheme, isDark }: HeaderProps) => {
         <div className="links hidden sm:flex flex-row gap-10 justify-end items-center tracking-wide  font-extralight text-sm font-body">
           <Link href="/" className="group relative inline-block">
             <p className="text-foreground ">Home</p>
-            <div className="absolute bottom-0 left-0 h-[2px] bg-foreground w-0 transition-all duration-300 group-hover:w-full"></div>
+            <div
+              className={`absolute -bottom-1  left-0 h-[2px] ${
+                pathname === "/" ? "w-full bg-foreground" : "w-0 bg-input"
+              } transition-all duration-300 group-hover:w-full`}
+            ></div>
           </Link>
 
           <Link href="/properties" className="group relative inline-block">
             <p className="text-foreground ">Properties</p>
-            <div className="absolute bottom-0 left-0 h-[2px] bg-foreground w-0 transition-all duration-300 group-hover:w-full"></div>
+            <div
+              className={`absolute -bottom-1 left-0 h-[2px] ${
+                pathname === "/properties"
+                  ? "w-full bg-foreground"
+                  : "w-0 bg-input"
+              } transition-all duration-300 group-hover:w-full`}
+            ></div>
           </Link>
 
           <Link href="/contact" className="group relative inline-block">
             <p className="text-foreground ">Contact</p>
-            <div className="absolute bottom-0 left-0 h-[2px] bg-foreground w-0 transition-all duration-300 group-hover:w-full"></div>
+            <div
+              className={`absolute -bottom-1 left-0 h-[2px] ${
+                pathname === "/contact"
+                  ? "w-full bg-foreground"
+                  : "w-0 bg-input"
+              } transition-all duration-300 group-hover:w-full`}
+            ></div>
           </Link>
 
           <Link href="/" className="group relative inline-block">
             <p className="text-foreground ">FAQ</p>
-            <div className="absolute bottom-0 left-0 h-[2px] bg-foreground w-0 transition-all duration-300 group-hover:w-full"></div>
+            <div
+              className={`absolute -bottom-1 left-0 h-[2px] ${
+                pathname === "/faqs" ? "w-full bg-foreground" : "w-0 bg-input"
+              } transition-all duration-300 group-hover:w-full`}
+            ></div>
           </Link>
         </div>
 

@@ -217,6 +217,7 @@ const PropertiesList: React.FC = () => {
           <LoadingSpinner message={`${propertyLoadingName}`} />
         </div>
       </div>
+
       <div
         className="properties-side h-[calc(90vh)] overflow-y-auto scrollbar-none lg:w-4/5 w-full grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8 p-5"
         ref={divRef}
