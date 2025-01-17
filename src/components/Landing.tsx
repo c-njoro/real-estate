@@ -1,6 +1,8 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const Landing = () => {
+  const router = useRouter();
   return (
     <div className="landing min-h-[calc(100vh)] w-screen flex flex-col justify-start gap-10 ">
       <div className="message w-screen h-[calc(30vh)] flex flex-col justify-end items-center ">
@@ -11,13 +13,22 @@ const Landing = () => {
         </p>
       </div>
       <div className="actions w-screen sm:h-[calc(10vh)] h-max flex sm:flex-row flex-col justify-center items-center gap-10 px-6 sm:px-0">
-        <button className="w-full sm:w-fit capitalize font-body text-sm font-bold bg-header rounded-lg shadow-md py-5 px-8 hover:bg-foreground hover:text-background">
+        <button
+          onClick={() => router.push("/properties")}
+          className="w-full sm:w-fit capitalize font-body text-sm font-bold bg-header rounded-lg shadow-md py-5 px-8 hover:bg-foreground hover:text-background"
+        >
           Explore Properties
         </button>
-        <button className="w-full sm:w-fit capitalize font-body text-sm font-bold bg-header rounded-lg shadow-md py-5 px-8 hover:bg-foreground hover:text-background">
+        <button
+          onClick={() => router.push("/properties")}
+          className="w-full sm:w-fit capitalize font-body text-sm font-bold bg-header rounded-lg shadow-md py-5 px-8 hover:bg-foreground hover:text-background"
+        >
           Buy Properties
         </button>
-        <button className="w-full sm:w-fit capitalize font-body text-sm font-bold bg-header rounded-lg shadow-md py-5 px-8 hover:bg-foreground hover:text-background">
+        <button
+          onClick={() => router.push("/properties")}
+          className="w-full sm:w-fit capitalize font-body text-sm font-bold bg-header rounded-lg shadow-md py-5 px-8 hover:bg-foreground hover:text-background"
+        >
           Rent Properties
         </button>
       </div>
