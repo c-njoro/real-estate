@@ -227,9 +227,9 @@ const PropertiesList: React.FC = () => {
             filteredProperties.map((property: Property, index: number) => (
               <div
                 key={index}
-                className="property-card flex flex-col w-full h-full bg-card text-foreground rounded-lg overflow-hidden shadow-xl pb-2 "
+                className="property-card flex flex-col w-full h-full bg-card text-foreground rounded-lg  shadow-xl pb-2 "
               >
-                <div className="top w-full relative h-[calc(25vh)]">
+                <div className="top w-full relative h-[calc(25vh)] overflow-hidden">
                   <div className="w-full h-full overflow-hidden">
                     <Image
                       src={`${property.imagePaths[0]}`}
