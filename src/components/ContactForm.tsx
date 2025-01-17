@@ -1,36 +1,8 @@
 import { motion } from "framer-motion";
-import Link from "next/link";
 
 const ContactForm = () => {
   return (
     <div className="w-screen h-max min-h-screen flex flex-col gap-12 sm:pt-[calc(16vh)] pt-[calc(11vh)] bg-background text-foreground  ">
-      <motion.div
-        initial={{ opacity: 0, x: -250 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{
-          duration: 2,
-          ease: "easeInOut",
-          type: "spring",
-          stiffness: 100,
-        }}
-        className="page-state w-full h-max mb-8 flex flex-row justify-start items-center gap-3"
-      >
-        <div
-          className="line-through w-[calc(12.5vw)] h-2"
-          style={{ borderTop: "0.05px solid rgba(128, 128, 128, 0.334)" }}
-        ></div>
-        <Link
-          href="/"
-          className="home-link font-body tracking-wider font-semibold hover:text-orange-500 "
-        >
-          Home{" "}
-        </Link>
-        <h4>/</h4>
-        <p className="font-body font-thin tracking-wide text-xs sm:text-sm flex flex-col justify-center items-end hover:cursor-not-allowed">
-          Contact
-        </p>
-      </motion.div>
-
       <div className="w-full h-max grid grid-cols-1 lg:grid-cols-3">
         <motion.div
           initial={{ opacity: 0, x: -200 }}
@@ -45,7 +17,7 @@ const ContactForm = () => {
         >
           <div className="header w-full h-max">
             <h1 className="w-full text-center font-bold font-body text-4xl  tracking-widest">
-              Contact Me
+              Contact Us
             </h1>
           </div>
           <div className="form w-full h-max flex flex-col gap-5 2xl:px-36 xl:px-28 lg:px-16 sm:px-10 px-5  justify-start items-start">
