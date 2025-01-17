@@ -15,6 +15,7 @@ const PropertiesList: React.FC = () => {
     isLoading: propertiesLoading,
     isError: propertiesError,
   } = useProperties(page, limit);
+  console.log(properties);
   const { data: allProperties } = useAllProperties();
   const [filteredProperties, setFilteredProperties] = useState([]);
 
@@ -26,7 +27,7 @@ const PropertiesList: React.FC = () => {
 
   useEffect(() => {
     if (properties) {
-      setFilteredProperties(properties);
+      setFilteredProperties(properties.properties);
     }
   }, [properties]);
 
@@ -114,7 +115,7 @@ const PropertiesList: React.FC = () => {
     }
     setMessage("");
     message?.classList.remove("hide");
-    setFilteredProperties(properties);
+    setFilteredProperties(properties.properties);
   };
 
   return (

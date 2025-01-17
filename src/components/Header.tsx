@@ -30,7 +30,7 @@ const Header = ({ toggleTheme, isDark }: HeaderProps) => {
             <div className="absolute bottom-0 left-0 h-[2px] bg-foreground w-0 transition-all duration-300 group-hover:w-full"></div>
           </Link>
 
-          <Link href="/" className="group relative inline-block">
+          <Link href="/contact" className="group relative inline-block">
             <p className="text-foreground ">Contact</p>
             <div className="absolute bottom-0 left-0 h-[2px] bg-foreground w-0 transition-all duration-300 group-hover:w-full"></div>
           </Link>

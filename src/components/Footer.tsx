@@ -6,6 +6,14 @@ import { FiGithub } from "react-icons/fi";
 import { PiCopyrightThin } from "react-icons/pi";
 
 const Footer = () => {
+  // const page = 1;
+  // const limit = 30;
+  // const {
+  //   data: properties,
+  //   isLoading: propertiesLoading,
+  //   isError: propertiesError,
+  // } = useProperties(page, limit);
+  // const { data: allProperties } = useAllProperties();
   return (
     <div className="w-screen h-max bg-header text-foreground flex flex-col pt-24 pb-10 justify-center items-center gap-12 overflow-x-hidden">
       <div className="sm:w-2/3 w-full h-max grid lg:grid-cols-4 grid-cols-1 place-items-center gap-6 px-3 sm:px-0">
@@ -93,7 +101,7 @@ const Footer = () => {
           </Link>
           <Link
             className="w-full h-max font-body sm:text-xl text-base font-bold tracking-wide hover:text-orange-300 hover:translate-x-3"
-            href="/"
+            href="/contact"
           >
             Contact
           </Link>
