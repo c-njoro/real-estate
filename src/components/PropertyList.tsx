@@ -68,6 +68,10 @@ const PropertiesList: React.FC = () => {
     const nameTerm = searchedName.current?.value?.toLowerCase() || "";
     const bedroomTerm = searchedBedroom.current?.value;
 
+    if (!locationTerm && !nameTerm && !bedroomTerm) {
+      clearSearch();
+    }
+
     // Convert bedroomTerm to a number if present
     const bedroomNumber = bedroomTerm ? parseInt(bedroomTerm, 10) : NaN;
 
