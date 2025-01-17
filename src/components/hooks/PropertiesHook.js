@@ -18,6 +18,8 @@ const useProperties = (page = 1, limit = 10) => {
     queryFn: () => fetchProperties(page, limit),
     staleTime: 5 * 60 * 1000, // Data remains fresh for 5 minutes
     cacheTime: 10 * 60 * 1000, // Cache remains for 10 minutes
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
   });
 };
 
