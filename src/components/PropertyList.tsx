@@ -4,9 +4,12 @@ import useProperties from "@/components/hooks/PropertiesHook"; //useProperties h
 import { Property } from "@/components/hooks/Property"; //Property interface
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
+import LoadingSpinner from "./LoadingSpinner";
 
 const PropertiesList: React.FC = () => {
+  const router = useRouter();
   const [message, setMessage] = useState<string>("kabum shalakaka");
   const [page, setPage] = useState(1);
   const limit = 10;
@@ -25,10 +28,24 @@ const PropertiesList: React.FC = () => {
 
   const divRef = useRef<HTMLDivElement>(null);
 
+  //this are used to show when property is loading
+  const [propertyLoadingName, setPropertyLoadingName] = useState<string>("");
+  const [aPropertyIsLoading, setAPropertyIsLoading] = useState<boolean>(false);
+
+  const handleAPropertyLoading = (name: string) => {
+    setAPropertyIsLoading(true);
+    setPropertyLoadingName(`Loading ${name}...`);
+  };
+
   useEffect(() => {
     if (properties) {
       setFilteredProperties(properties.properties);
     }
+    // return () => {
+    //   aPropertyIsLoading = false;
+    //   propertyLoadingName = "Loading property...";
+    //   showLoader = "hide";
+    // };
   }, [properties]);
 
   const handleNextPage = () => {
@@ -192,6 +209,13 @@ const PropertiesList: React.FC = () => {
             ""
           )}
         </div>
+        <div
+          className={`property-loader w-full h-max mt-28 ${
+            aPropertyIsLoading ? "" : "hide"
+          }`}
+        >
+          <LoadingSpinner message={`${propertyLoadingName}`} />
+        </div>
       </div>
       <div
         className="properties-side h-[calc(90vh)] overflow-y-auto scrollbar-none lg:w-4/5 w-full grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8 p-5"
@@ -263,25 +287,51 @@ const PropertiesList: React.FC = () => {
                     >
                       Inquire Agency
                     </Link>
-                    <Link
-                      href={`/properties/${property._id}`}
+                    <button
+                      onClick={() => {
+                        handleAPropertyLoading(property.name);
+                        router.push(`/properties/${property._id}`);
+                      }}
+                      disabled={aPropertyIsLoading}
                       className="w-full h-max py-2 border-2 border-foreground text-foreground  text-sm uppercase tracking-wide flex flex-row justify-center items-center rounded-md"
                     >
                       more
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>
             ))
           ) : (
-            <div>No more properties, please go back to previous page.</div>
+            <div className="w-full h-full flex flex-col items-center justify-center xl:col-span-3 sm:col-span-2 col-span-1">
+              <h1 className="font-bold font-body text-4xl tracking-widest">
+                End!
+              </h1>
+              <p>Property list ended, go to previous page</p>
+              <button
+                onClick={handlePreviousPage}
+                disabled={page === 1}
+                className="pagination-button text-sm bg-header font-body tracking-wide uppercase shadow-md py-3 px-2 rounded-md"
+              >
+                Previous Page
+              </button>
+            </div>
           )
         ) : propertiesLoading ? (
-          <div>Loading</div>
+          <div className="w-full h-full flex flex-col items-center justify-center xl:col-span-3 sm:col-span-2 col-span-1">
+            <LoadingSpinner message="Loading properties..." />
+          </div>
         ) : propertiesError ? (
-          <div>Error fetching properties</div>
+          <div className="w-full h-full flex flex-col items-center justify-center xl:col-span-3 sm:col-span-2 col-span-1">
+            <p className="font-bold font-body text-4xl tracking-widest text-red-500">
+              Server ran to an error while fetching properties !!!
+            </p>
+          </div>
         ) : (
-          <div>Could not execute properties fetch</div>
+          <div className="w-full h-full flex flex-col items-center justify-center xl:col-span-3 sm:col-span-2 col-span-1">
+            <p className="font-bold font-body text-4xl tracking-widest text-red-500">
+              Did not initiate fetch !!!
+            </p>
+          </div>
         )}
       </div>
     </div>
