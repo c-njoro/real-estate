@@ -30,12 +30,12 @@ const Footer = () => {
         >
           <div className="w-full h-max flex-1">
             <h1 className="font-body font-bold md:text-5xl text-3xl tracking-widest">
-              Charles.
+              Company .
             </h1>
           </div>
           <div className="w-full h-max flex-1">
             <p className="font-heading font-extralight">
-              Subscribe to my newsletter:
+              Subscribe to stay upto date:
             </p>
           </div>
           <div className="w-full h-max flex-1">
@@ -144,7 +144,7 @@ const Footer = () => {
           <div className="xl:w-4/5 lg:w-10/12 w-2/3  h-max flex flex-row justify-start items-center gap-5">
             <a
               className="p-2 rounded-full text-background bg-foreground"
-              href="http://www.linkedin.com/in/charles-njoroge-063b0626a"
+              href="http://www.youtube.com"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -153,7 +153,7 @@ const Footer = () => {
 
             <a
               className="p-2 rounded-full text-background bg-foreground"
-              href="https://github.com/c-njoro"
+              href="http://www.youtube.com"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -162,7 +162,7 @@ const Footer = () => {
 
             <a
               className="p-2 rounded-full text-background bg-foreground"
-              href="https://github.com/c-njoro"
+              href="http://www.youtube.com"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -170,7 +170,7 @@ const Footer = () => {
             </a>
 
             <a
-              href="https://github.com/c-njoro"
+              href="http://www.youtube.com"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-full text-background bg-foreground"
@@ -199,22 +199,22 @@ const Footer = () => {
           className="w-full h-full flex flex-col justify-start items-start gap-1"
         >
           <p className="font-heading tracking-wide font-extralight text-sm sm:text-base">
-            Websites
+            Renting
           </p>
           <p className="font-heading tracking-wide font-extralight text-sm sm:text-base">
-            Web Apps
+            Selling
           </p>
           <p className="font-heading tracking-wide font-extralight text-sm sm:text-base">
-            Mobile Apps
+            Buying
           </p>
           <p className="font-heading tracking-wide font-extralight text-sm sm:text-base">
-            Stand alone app
+            Air BnB
           </p>
           <p className="font-heading tracking-wide font-extralight text-sm sm:text-base">
-            Shopify Web
+            Mortgage
           </p>
           <p className="font-heading tracking-wide font-extralight text-sm sm:text-base">
-            Ussd codes
+            Building
           </p>
         </motion.div>
 
@@ -231,16 +231,16 @@ const Footer = () => {
         >
           <h1 className="font-bold font-body tracking-wide mb-2">Kenya</h1>
           <p className="font-heading tracking-wide font-extralight text-sm sm:text-base">
-            Nairobi
+            City
           </p>
           <p className="font-heading tracking-wide font-extralight text-sm sm:text-base">
-            Donholm, Savannah
+            Office Location
           </p>
           <p className="font-heading tracking-wide font-extralight text-sm sm:text-base">
-            mwanikic314@gmail.com
+            company@gmail.com
           </p>
           <p className="font-heading tracking-wide font-extralight text-sm sm:text-base">
-            +254720128694
+            +2547XXXXXXXX
           </p>
         </motion.div>
       </div>
