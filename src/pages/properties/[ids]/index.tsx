@@ -68,7 +68,6 @@ export default OneProperty;
 // Adjust the path based on your file structure
 
 export async function getStaticPaths() {
-  const productsUrl = process.env.NEXT_PUBLIC_PROPERTIES_URL;
   // We can return empty paths and let fallback handle the generation
   return {
     paths: [], // Don't pre-render any pages at build time
@@ -102,6 +101,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
       revalidate: 60, // Optional: Revalidate every 60 seconds
     };
   } catch (error) {
+    console.error(error);
     return {
       notFound: true,
     };

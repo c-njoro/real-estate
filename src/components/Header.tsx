@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useRouter } from "next/router";
 
 interface HeaderProps {
   toggleTheme: () => void;
@@ -9,7 +8,6 @@ interface HeaderProps {
 }
 
 const Header = ({ toggleTheme, isDark }: HeaderProps) => {
-  const router = useRouter();
   const pathname = usePathname();
   return (
     <div className="bg-header flex flex-row justify-between p-4 items-center w-[calc(100vw)] h-[calc(10vh)] fixed z-10">
