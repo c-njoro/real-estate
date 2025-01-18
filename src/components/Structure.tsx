@@ -26,8 +26,8 @@ const Structure: React.FC<StructureProps> = ({ children }) => {
     });
   };
   return (
-    <div className="relative w-full ">
-      <div className="">
+    <div className="relative w-full overflow-hidden h-max ">
+      <div className="fixed top-0 left-0 z-50 sm:bg-transparent bg-header">
         <Header toggleTheme={toggleTheme} isDark={isDark} />
       </div>
       <div className="w-full pt-[calc(10vh)]">{children}</div>

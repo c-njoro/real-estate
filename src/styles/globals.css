@@ -45,3 +45,56 @@ input::placeholder {
   color: var(--foreground);
   text-transform: capitalize;
 }
+
+/* for header */
+.give-black-bg {
+  background-color: var(--background);
+  animation: backgroundChange 500ms ease-in-out;
+}
+
+.unclicked {
+  @apply w-8 h-6 flex flex-col justify-center items-center cursor-pointer relative;
+  border-top: 2px solid var(--text-blueLight);
+}
+
+.unclicked::after {
+  content: "";
+  display: block;
+  background-color: var(--text-blueLight);
+  height: 2px;
+  width: 100%;
+  margin-bottom: 1px;
+}
+
+.unclicked::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  background-color: var(--text-blueLight);
+  height: 2px;
+  width: 80%;
+  left: 0;
+}
+
+.clicked {
+  @apply w-8 h-8 flex flex-col justify-center items-center cursor-pointer relative -rotate-45;
+}
+
+.clicked::after {
+  content: "";
+  display: block;
+  background-color: var(--text-blueLight);
+  height: 2px;
+  width: 100%;
+}
+
+.clicked::before {
+  content: "";
+  display: block;
+  background-color: var(--text-blueLight);
+  height: 2px;
+  width: 100%;
+  transform: rotate(90deg);
+  position: absolute;
+}

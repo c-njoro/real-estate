@@ -95,9 +95,9 @@ const Footer = () => {
           </Link>
           <Link
             className="w-full h-max font-body sm:text-xl text-base font-bold tracking-wide hover:text-orange-300 hover:translate-x-3"
-            href="/"
+            href="/about"
           >
-            About
+            About Us
           </Link>
           <Link
             className="w-full h-max font-body sm:text-xl text-base font-bold tracking-wide hover:text-orange-300 hover:translate-x-3"
