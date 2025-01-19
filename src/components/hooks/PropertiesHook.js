@@ -1,7 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import axiosRetry from "axios-retry";
 
 const fetchProperties = async (page, limit) => {
+  axiosRetry(axios, { retries: 3 });
   const frontendUrl = process.env.NEXT_PUBLIC_BASE_FRONTEND_URL;
   const response = await axios.get(`${frontendUrl}/api/properties`, {
     params: {

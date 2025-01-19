@@ -25,6 +25,7 @@ export default async function handler(req, res) {
         headers: {
           Accept: "application/json",
         },
+        timeout: 10000,
       }
     );
 

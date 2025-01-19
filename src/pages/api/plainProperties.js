@@ -8,6 +8,7 @@ export default async function handler(req, res) {
         Accept: "application/json",
         // Add any other required headers
       },
+      timeout: 10000,
     });
 
     return res.status(200).json(response.data);

@@ -17,6 +17,7 @@ export default async function handler(req, res) {
           _page,
           _limit,
         },
+        timeout: 10000,
         headers: {
           Accept: "application/json",
           // Add any other required headers
