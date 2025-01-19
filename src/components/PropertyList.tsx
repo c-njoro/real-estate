@@ -18,7 +18,7 @@ const PropertiesList: React.FC = () => {
     isLoading: propertiesLoading,
     isError: propertiesError,
   } = useProperties(page, limit);
-  console.log(properties);
+
   const { data: allProperties } = useAllProperties();
   const [filteredProperties, setFilteredProperties] = useState([]);
 

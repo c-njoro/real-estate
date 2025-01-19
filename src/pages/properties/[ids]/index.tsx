@@ -77,7 +77,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context: GetStaticPropsContext) {
   try {
-    const productsUrl = process.env.NEXT_PUBLIC_PROPERTIES_ONE_URL;
+    const productsUrl = process.env.PROPERTIES_ONE_URL;
     const id = context?.params?.ids;
 
     // Use your single property endpoint
