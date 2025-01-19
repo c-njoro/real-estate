@@ -1,5 +1,6 @@
 import { Property } from "@/components/hooks/Property";
 import Slider from "@/components/Slider";
+import axios from "axios";
 import { GetStaticPropsContext } from "next";
 import Link from "next/link";
 import { BsWhatsapp } from "react-icons/bs";
@@ -77,28 +78,22 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context: GetStaticPropsContext) {
   try {
-    const productsUrl = process.env.PROPERTIES_ONE_URL;
     const id = context?.params?.ids;
+    const frontendUrl = process.env.NEXT_PUBLIC_BASE_FRONTEND_URL;
 
-    // Use your single property endpoint
-    const res = await fetch(`${productsUrl}/${id}`, {
-      headers: {
-        Accept: "application/json",
-        "ngrok-skip-browser-warning": "true",
-      },
-    });
+    const res = await axios.get(`${frontendUrl}/api/oneProperty?id=${id}`);
 
-    if (!res.ok) {
+    if (res.status !== 200) {
       return {
         notFound: true, // This will show your 404 page
       };
     }
 
-    const currentData = await res.json();
+    const currentData = await res.data;
 
     return {
       props: { currentData },
-      revalidate: 60, // Optional: Revalidate every 60 seconds
+      revalidate: 60,
     };
   } catch (error) {
     console.error(error);

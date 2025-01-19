@@ -2,7 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const fetchAllProperties = async () => {
-  const response = await axios.get(`/api/plainProperties`);
+  const frontendUrl = process.env.NEXT_PUBLIC_BASE_FRONTEND_URL;
+  const response = await axios.get(`${frontendUrl}/api/plainProperties`);
   return response.data;
 };
 

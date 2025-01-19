@@ -2,8 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const fetchProperties = async (page, limit) => {
-  const propertiesUrl = process.env.PAGINATED_PROPERTIES_URL;
-  const response = await axios.get("http://localhost:3000/api/properties", {
+  const frontendUrl = process.env.NEXT_PUBLIC_BASE_FRONTEND_URL;
+  const response = await axios.get(`${frontendUrl}/api/properties`, {
     params: {
       _page: page,
       _limit: limit,
