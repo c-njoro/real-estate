@@ -35,24 +35,41 @@ const AdminPage = () => {
 
   if (!isAuthenticated) {
     return (
-      <div style={{ textAlign: "center", marginTop: "50px" }}>
-        <h1>Login</h1>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <br />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <br />
-        <button onClick={handleLogin}>Login</button>
-        <p>{message}</p>
+      <div className="w-full h-max min-h-[calc(90vh)] flex flex-col justify-center items-center bg-background text-foreground gap-8">
+        <div className="w-full md:w-1/3 sm:w-3/4 flex flex-col justify-center items-center  h-max p-2 shadow-lg rounded-lg gap-8 bg-header">
+          {" "}
+          <div className="w-full flex flex-row justify-center items-center">
+            <h1 className="font-bold font-heading text-5xl">Login</h1>
+          </div>
+          <div className="w-full flex flex-col justify-center items-center  h-max p-2">
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              className="w-full h-10 pl-5 rounded-full bg-input text-foreground font-body font-extralight tracking-wide text-sm sm:text-base"
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <br />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full h-10 pl-5 rounded-full bg-input text-foreground font-body font-extralight tracking-wide text-sm sm:text-base"
+            />
+            <br />
+            <button
+              onClick={handleLogin}
+              className="bg-input shadow-md font-semibold font-body text-sm uppercase px-10 py-2 rounded-full"
+            >
+              Login
+            </button>
+          </div>
+          <div className="w-full flex flex-col justify-center items-center  h-max p-2">
+            {" "}
+            <p className="font-heading uppercase text-red-500">{message}</p>
+          </div>
+        </div>
       </div>
     );
   }
