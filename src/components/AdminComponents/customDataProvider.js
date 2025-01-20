@@ -59,7 +59,7 @@ const dataProvider = {
   },
 
   delete: async (resource, params) => {
-    await axios.delete(`${apiUrl}/api/updateProperty?id=${params.id}`);
+    await axios.delete(`${apiUrl}/api/deleteProperty?id=${params.id}`);
     return { data: params };
   },
 
