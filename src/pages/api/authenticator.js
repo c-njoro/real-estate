@@ -16,7 +16,7 @@ export default async function handler(req, res) {
 
     return res.status(409).json({ authenticated: false });
   } catch (error) {
-    console.log("Did not try to authenticate");
+    console.log("Did not try to authenticate: ", error);
     return res.status(500).json({ authenticated: false });
   }
 }

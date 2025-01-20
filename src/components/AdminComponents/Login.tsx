@@ -27,7 +27,9 @@ const AdminPage = () => {
 
       setMessage("Failed authentication!!!");
     } catch (error) {
-      setMessage("Failed authentication!!!");
+      if (error) {
+        setMessage("Failed authentication!!!");
+      }
     }
   };
 
