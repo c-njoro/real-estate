@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import React, { ReactNode, useState } from "react";
 import { FaChartPie, FaCog, FaHome, FaUserFriends } from "react-icons/fa";
 
@@ -9,8 +8,6 @@ interface Sections {
 }
 
 const Dashboard: React.FC = () => {
-  const router = useRouter();
-  // State for the active section
   const [activeSection, setActiveSection] = useState<string>("overview");
 
   // Sections content mapped to their keys
