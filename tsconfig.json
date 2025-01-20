@@ -22,7 +22,8 @@
     "**/*.ts",
     "**/*.tsx",
     "src/pages/api/properties.js",
-    "src/components/Temp.jsx"
+    "src/components/Temp.jsx",
+    "src/components/AdminComponents/CustomLayout.jsx"
   ],
   "exclude": ["node_modules"]
 }
