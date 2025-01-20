@@ -24,7 +24,7 @@ const PropertyShow = () => (
       <TextField source="city" label="City" />
 
       {/* Size */}
-      <NumberField source="size" label="Size (sq. ft.)" />
+      <TextField source="size" label="Size (sq. ft.)" />
 
       {/* Bedrooms */}
       <NumberField source="bedrooms" label="Bedrooms" />

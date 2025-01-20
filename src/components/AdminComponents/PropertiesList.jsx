@@ -1,6 +1,5 @@
 import {
   Datagrid,
-  DateField,
   DeleteButton,
   EditButton,
   List,
@@ -19,7 +18,7 @@ const PropertiesList = (props) => {
         <TextField source="bathrooms" />
         <TextField source="description" />
         <TextField source="availabilityStatus" />
-        <DateField source="createdAt" />
+        <TextField source="size" />
         <EditButton />
         <DeleteButton />
       </Datagrid>
