@@ -1,11 +1,9 @@
-import Link from "next/link";
+import AdminPage from "@/components/AdminComponents/Login";
 
 const Admin = () => {
   return (
     <div>
-      <Link href="/admin/manage" target="_blank">
-        Manage Properties
-      </Link>
+      <AdminPage />
     </div>
   );
 };

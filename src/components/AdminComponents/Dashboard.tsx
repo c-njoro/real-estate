@@ -1,0 +1,13 @@
+import Link from "next/link";
+
+const Dashboard = () => {
+  return (
+    <div>
+      <Link href="/admin/manage" target="_blank">
+        Manage Properties
+      </Link>
+    </div>
+  );
+};
+
+export default Dashboard;
