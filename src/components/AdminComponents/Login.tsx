@@ -1,12 +1,12 @@
 import axios from "axios";
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useBooleanState } from "../GlobalContext";
 import Dashboard from "./Dashboard";
 
 const AdminPage = () => {
+  const { value, setValue } = useBooleanState();
   const [username, setUsername] = useState<string>();
   const [password, setPassword] = useState<string>();
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [message, setMessage] = useState("");
 
   const handleLogin = async () => {
@@ -20,7 +20,7 @@ const AdminPage = () => {
       );
 
       if (response.data.authenticated === true) {
-        setIsAuthenticated(true);
+        setValue(true);
         setMessage("Authentication successful");
         return;
       }
@@ -33,7 +33,14 @@ const AdminPage = () => {
     }
   };
 
-  if (!isAuthenticated) {
+  //handle logout
+  useEffect(() => {
+    return () => {
+      setValue(false);
+    };
+  }, [setValue]);
+
+  if (!value) {
     return (
       <div className="w-full h-max min-h-[calc(90vh)] flex flex-col justify-center items-center bg-background text-foreground gap-8">
         <div className="w-full md:w-1/3 sm:w-3/4 flex flex-col justify-center items-center  h-max p-2 shadow-lg rounded-lg gap-8 bg-header">

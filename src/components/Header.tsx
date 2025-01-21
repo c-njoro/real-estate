@@ -3,6 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useBooleanState } from "./GlobalContext";
 
 interface HeaderProps {
   toggleTheme: () => void;
@@ -10,6 +11,7 @@ interface HeaderProps {
 }
 
 const Header = ({ toggleTheme, isDark }: HeaderProps) => {
+  const { value } = useBooleanState();
   const router = useRouter();
   const pathname = usePathname();
   const [menuClass, setMenuClass] = useState("hide");
@@ -39,58 +41,106 @@ const Header = ({ toggleTheme, isDark }: HeaderProps) => {
           ></Image>
         </div>
         <div className="sm:w-[calc(70vw)] w-[calc(50vw)] h-[calc(10vh)] flex flex-row justify-end items-center gap-10 ">
-          <div className="links hidden sm:flex flex-row gap-10 justify-end items-center tracking-wide  font-extralight text-sm font-body">
-            <Link href="/" className="group relative inline-block">
-              <p className="text-foreground ">Home</p>
-              <div
-                className={`absolute -bottom-1  left-0 h-[2px] ${
-                  pathname === "/" ? "w-full bg-foreground" : "w-0 bg-input"
-                } transition-all duration-300 group-hover:w-full`}
-              ></div>
-            </Link>
+          {pathname === "/admin" ? (
+            <div className="flex flex-row gap-3 justify-center items-center">
+              {!value ? (
+                <div className="text-xl flex flex-row gap-3">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="size-6 text-red-500"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"
+                    />
+                  </svg>
+                  <p className="font-semibold font-body tracking-wider text-xl text-red-500">
+                    LOCKED
+                  </p>
+                </div>
+              ) : (
+                <div className="flex flex-row gap-3">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="size-6 text-green-500"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M13.5 10.5V6.75a4.5 4.5 0 1 1 9 0v3.75M3.75 21.75h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H3.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"
+                    />
+                  </svg>
+                  <p className="font-semibold font-body tracking-wider text-xl text-green-500">
+                    ADMIN
+                  </p>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="links hidden sm:flex flex-row gap-10 justify-end items-center tracking-wide  font-extralight text-sm font-body">
+              <Link href="/" className="group relative inline-block">
+                <p className="text-foreground ">Home</p>
+                <div
+                  className={`absolute -bottom-1  left-0 h-[2px] ${
+                    pathname === "/" ? "w-full bg-foreground" : "w-0 bg-input"
+                  } transition-all duration-300 group-hover:w-full`}
+                ></div>
+              </Link>
 
-            <Link href="/properties" className="group relative inline-block">
-              <p className="text-foreground ">Properties</p>
-              <div
-                className={`absolute -bottom-1 left-0 h-[2px] ${
-                  pathname === "/properties"
-                    ? "w-full bg-foreground"
-                    : "w-0 bg-input"
-                } transition-all duration-300 group-hover:w-full`}
-              ></div>
-            </Link>
+              <Link href="/properties" className="group relative inline-block">
+                <p className="text-foreground ">Properties</p>
+                <div
+                  className={`absolute -bottom-1 left-0 h-[2px] ${
+                    pathname === "/properties"
+                      ? "w-full bg-foreground"
+                      : "w-0 bg-input"
+                  } transition-all duration-300 group-hover:w-full`}
+                ></div>
+              </Link>
 
-            <Link href="/contact" className="group relative inline-block">
-              <p className="text-foreground ">Contact</p>
-              <div
-                className={`absolute -bottom-1 left-0 h-[2px] ${
-                  pathname === "/contact"
-                    ? "w-full bg-foreground"
-                    : "w-0 bg-input"
-                } transition-all duration-300 group-hover:w-full`}
-              ></div>
-            </Link>
+              <Link href="/contact" className="group relative inline-block">
+                <p className="text-foreground ">Contact</p>
+                <div
+                  className={`absolute -bottom-1 left-0 h-[2px] ${
+                    pathname === "/contact"
+                      ? "w-full bg-foreground"
+                      : "w-0 bg-input"
+                  } transition-all duration-300 group-hover:w-full`}
+                ></div>
+              </Link>
 
-            <Link href="/" className="group relative inline-block">
-              <p className="text-foreground ">FAQ</p>
-              <div
-                className={`absolute -bottom-1 left-0 h-[2px] ${
-                  pathname === "/faqs" ? "w-full bg-foreground" : "w-0 bg-input"
-                } transition-all duration-300 group-hover:w-full`}
-              ></div>
-            </Link>
+              <Link href="/" className="group relative inline-block">
+                <p className="text-foreground ">FAQ</p>
+                <div
+                  className={`absolute -bottom-1 left-0 h-[2px] ${
+                    pathname === "/faqs"
+                      ? "w-full bg-foreground"
+                      : "w-0 bg-input"
+                  } transition-all duration-300 group-hover:w-full`}
+                ></div>
+              </Link>
 
-            <Link href="/about" className="group relative inline-block">
-              <p className="text-foreground ">About Us</p>
-              <div
-                className={`absolute -bottom-1 left-0 h-[2px] ${
-                  pathname === "/about"
-                    ? "w-full bg-foreground"
-                    : "w-0 bg-input"
-                } transition-all duration-300 group-hover:w-full`}
-              ></div>
-            </Link>
-          </div>
+              <Link href="/about" className="group relative inline-block">
+                <p className="text-foreground ">About Us</p>
+                <div
+                  className={`absolute -bottom-1 left-0 h-[2px] ${
+                    pathname === "/about"
+                      ? "w-full bg-foreground"
+                      : "w-0 bg-input"
+                  } transition-all duration-300 group-hover:w-full`}
+                ></div>
+              </Link>
+            </div>
+          )}
 
           {isDark ? (
             <button onClick={toggleTheme}>

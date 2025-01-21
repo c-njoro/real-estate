@@ -1,14 +1,22 @@
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { ReactNode, useState } from "react";
 import { FaChartPie, FaCog, FaHome, FaUserFriends } from "react-icons/fa";
-
+import { useBooleanState } from "../GlobalContext";
 // Define the type for the sections object
 interface Sections {
   [key: string]: ReactNode;
 }
 
 const Dashboard: React.FC = () => {
+  const router = useRouter();
   const [activeSection, setActiveSection] = useState<string>("overview");
+  const { value, setValue } = useBooleanState();
+
+  const logOut = () => {
+    setValue(false);
+    router.push("/");
+  };
 
   // Sections content mapped to their keys
   const sections: Sections = {
@@ -121,6 +129,16 @@ const Dashboard: React.FC = () => {
           >
             Properties Management
           </Link>
+          {value ? (
+            <button
+              onClick={logOut}
+              className="flex items-center p-3 mt-6 bg-red-600 hover:bg-red-700 rounded w-full"
+            >
+              Log Out
+            </button>
+          ) : (
+            ""
+          )}
         </nav>
 
         {/* Main Content */}

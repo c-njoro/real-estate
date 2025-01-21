@@ -1,3 +1,4 @@
+import { BooleanStateProvider } from "@/components/GlobalContext";
 import { prefetchProperties } from "@/components/hooks/prefetchUtil";
 import Structure from "@/components/Structure";
 import "@/styles/globals.css";
@@ -14,9 +15,11 @@ if (typeof window !== "undefined") {
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
-      <Structure>
-        <Component {...pageProps} />
-      </Structure>
+      <BooleanStateProvider>
+        <Structure>
+          <Component {...pageProps} />
+        </Structure>
+      </BooleanStateProvider>
     </QueryClientProvider>
   );
 }
