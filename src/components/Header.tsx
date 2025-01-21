@@ -41,7 +41,7 @@ const Header = ({ toggleTheme, isDark }: HeaderProps) => {
           ></Image>
         </div>
         <div className="sm:w-[calc(70vw)] w-[calc(50vw)] h-[calc(10vh)] flex flex-row justify-end items-center gap-10 ">
-          {pathname === "/admin" ? (
+          {pathname.startsWith("/admin") ? (
             <div className="flex flex-row gap-3 justify-center items-center">
               {!value ? (
                 <div className="text-xl flex flex-row gap-3">

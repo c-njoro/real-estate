@@ -1,3 +1,4 @@
+import { useBooleanState } from "@/components/GlobalContext";
 import { Suspense, lazy, useEffect, useState } from "react";
 
 const ManagerPanel = lazy(
@@ -5,12 +6,20 @@ const ManagerPanel = lazy(
 );
 
 const Management = () => {
+  const { setValue } = useBooleanState();
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     // Set isClient to true on client side
     setIsClient(true);
   }, [isClient]);
+
+  useEffect(() => {
+    setValue(true);
+    return () => {
+      setValue(false);
+    };
+  }, [setValue]);
 
   return (
     <div>
