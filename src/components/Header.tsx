@@ -33,9 +33,9 @@ const Header = ({ toggleTheme, isDark }: HeaderProps) => {
       <div className="bg-header flex flex-row justify-between p-4 items-center w-[calc(100vw)] h-[calc(10vh)] fixed z-10">
         <div className="logo sm:w-[calc(30vw)] w-[calc(50vw)] sm:h-[calc(10vh)] flex flex-col justify-center items-center">
           <Image
-            src={`https://images.pexels.com/photos/430205/pexels-photo-430205.jpeg`}
+            src={`/companylogo.png`}
             alt="company logo"
-            width={100}
+            width={200}
             height={100}
             className="rounded-full"
           ></Image>
