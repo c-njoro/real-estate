@@ -1,10 +1,17 @@
 import AboutUs from "@/components/AboutUs";
+import Head from "next/head";
 
 const AboutPage = () => {
   return (
-    <div>
-      <AboutUs />
-    </div>
+    <>
+      <Head>
+        <title>About - Premier Estates</title>
+      </Head>
+
+      <div>
+        <AboutUs />
+      </div>
+    </>
   );
 };
 

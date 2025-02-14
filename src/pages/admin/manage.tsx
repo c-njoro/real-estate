@@ -1,4 +1,5 @@
 import { useBooleanState } from "@/components/GlobalContext";
+import Head from "next/head";
 import { Suspense, lazy, useEffect, useState } from "react";
 
 const ManagerPanel = lazy(
@@ -22,13 +23,18 @@ const Management = () => {
   }, [setValue]);
 
   return (
-    <div>
-      {isClient && (
-        <Suspense fallback={<div>Loading...</div>}>
-          <ManagerPanel />
-        </Suspense>
-      )}
-    </div>
+    <>
+      <Head>
+        <title>Admin - Manage Properties</title>
+      </Head>
+      <div>
+        {isClient && (
+          <Suspense fallback={<div>Loading...</div>}>
+            <ManagerPanel />
+          </Suspense>
+        )}
+      </div>
+    </>
   );
 };
 

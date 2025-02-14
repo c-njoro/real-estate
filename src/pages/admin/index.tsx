@@ -1,10 +1,16 @@
 import AdminPage from "@/components/AdminComponents/Login";
+import Head from "next/head";
 
 const Admin = () => {
   return (
-    <div>
-      <AdminPage />
-    </div>
+    <>
+      <Head>
+        <title>Admin - Premier Estates</title>
+      </Head>
+      <div>
+        <AdminPage />
+      </div>
+    </>
   );
 };
 

@@ -1,12 +1,18 @@
 import PropertiesList from "@/components/PropertyList";
+import Head from "next/head";
 
 const Properties = () => {
   return (
-    <div>
+    <>
+      <Head>
+        <title>Properties - Premier Estates</title>
+      </Head>
       <div>
-        <PropertiesList />
+        <div>
+          <PropertiesList />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

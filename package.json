@@ -13,6 +13,7 @@
     "axios": "^1.7.9",
     "axios-retry": "^4.5.0",
     "framer-motion": "^11.17.0",
+    "mongoose": "^8.10.0",
     "next": "15.1.4",
     "react": "^19.0.0",
     "react-admin": "^5.4.4",
