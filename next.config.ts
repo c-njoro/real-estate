@@ -1,7 +1,6 @@
-import type { NextConfig } from "next";
+import { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   reactStrictMode: true,
   images: {
     domains: [
@@ -10,6 +9,14 @@ const nextConfig: NextConfig = {
       "imgs.search.brave.com",
       "res.cloudinary.com",
     ],
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/sitemap.xml",
+        destination: "/api/sitemap.xml",
+      },
+    ];
   },
 };
 

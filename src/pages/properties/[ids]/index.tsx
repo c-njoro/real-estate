@@ -2,7 +2,7 @@ import { Property } from "@/components/hooks/Property";
 import Slider from "@/components/Slider";
 import axios from "axios";
 import { GetStaticPropsContext } from "next";
-import Head from "next/head";
+import { NextSeo } from "next-seo";
 import Link from "next/link";
 import { BsWhatsapp } from "react-icons/bs";
 import { FaPhone } from "react-icons/fa";
@@ -10,9 +10,19 @@ import { FaPhone } from "react-icons/fa";
 const OneProperty = ({ currentData }: PropertyPageProps) => {
   return (
     <>
-      <Head>
-        <title>{`${currentData.name} - Premier Estates`}</title>
-      </Head>
+      <NextSeo
+        title={currentData.name}
+        description={`${currentData.bedrooms} bedrooms and ${currentData.bathrooms} bathrooms property in ${currentData.city}. ${currentData.description}`}
+        canonical={`https://premierestates.com/properties/${currentData._id}`}
+        openGraph={{
+          images: currentData.imagePaths.map((image) => ({
+            url: image,
+            width: 1200,
+            height: 630,
+            alt: currentData.name,
+          })),
+        }}
+      />
 
       <div className="p-6 bg-background text-foreground grid lg:grid-cols-2 grid-cols-1 gap-12">
         <div>
